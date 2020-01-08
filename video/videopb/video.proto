@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package video;
+option go_package="videopb";
+
+message Video{
+    string name = 1;
+}
+
+message VideoStreamRequest{
+    Video video = 1;
+}
+
+message VideoStreamResponse{
+    string result = 1;
+}
+
+service VideoService{
+    // Bidirectional 
+    rpc VideoStream(stream VideoStreamRequest) returns (stream VideoStreamResponse){};
+
+}
+
